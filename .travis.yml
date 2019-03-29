@@ -12,7 +12,6 @@ android:
   - tools
   - platform-tools
   - build-tools-28.0.3
-  - android-27
   - android-28
 
 jdk: oraclejdk8
@@ -41,8 +40,9 @@ install:
 - flutter doctor
 
 script:
-- flutter analyze lib/ test/
-- flutter test test/
+- flutter packages get
+- flutter analyze --no-pub --no-current-package lib/ test/
+- flutter test --no-pub test/
 
 before_deploy:
 - flutter build apk
